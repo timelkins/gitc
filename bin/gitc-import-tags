@@ -25,9 +25,12 @@ use warnings;
 use File::Temp qw( tempfile );
 use App::Gitc::Util qw(
     archived_tags
+    check_gitc_setup
     git_dir
     open_packed_refs
 );
+
+check_gitc_setup();
 
 # this script copies tags from the tag_archive table in the gitc database
 # into .git/packed-refs in the local repository.  it's conceptually the

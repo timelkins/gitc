@@ -24,6 +24,7 @@ use warnings;
 
 use App::Gitc::Util qw(
     cache_meta_data
+    check_gitc_setup
     confirm
     current_branch
     environment_preceding
@@ -48,6 +49,8 @@ use App::Gitc::Util qw(
 use App::Gitc::Reversible;
 use POSIX qw( strftime );
 use Getopt::Long qw( :config pass_through );
+
+check_gitc_setup();
 
 # git 1.7.10 added interactive logging of merges.  Since promotions can
 # involve hundreds of merges, we really don't want interactive logging.

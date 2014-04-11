@@ -24,6 +24,9 @@ use warnings;
 
 use App::Gitc::Util qw(
     branch_point
+    check_gitc_setup
 );
+
+check_gitc_setup();
 
 printf "%s\n",  branch_point(shift);

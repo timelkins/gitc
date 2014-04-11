@@ -23,6 +23,7 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     confirm
     current_branch
     full_changeset_name
@@ -46,6 +47,8 @@ use App::Gitc::Util qw(
 );
 use App::Gitc::Reversible;
 use Getopt::Long;
+
+check_gitc_setup();
 
 my $skip_email = 0;
 my $self_review = 0;

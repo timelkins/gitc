@@ -24,9 +24,12 @@ use warnings;
 
 use App::Gitc::Util qw(
     branch_point
+    check_gitc_setup
     current_branch
     full_changeset_name
 );
+
+check_gitc_setup();
 
 my $changeset = $ARGV[0] && $ARGV[0] !~ /^-/ ? shift : undef;
 my $ref = $changeset ? full_changeset_name($changeset) : current_branch();

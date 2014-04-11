@@ -22,7 +22,12 @@ use warnings;
 # ABSTRACT: Show a diff of the current changeset
 # VERSION
 
-use App::Gitc::Util qw( branch_point );
+use App::Gitc::Util qw(
+    branch_point
+    check_gitc_setup
+);
+
+check_gitc_setup();
 
 my $merge_base = branch_point();
 exec "git diff --no-prefix @ARGV $merge_base HEAD";

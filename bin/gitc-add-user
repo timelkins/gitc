@@ -22,7 +22,13 @@ use warnings;
 # ABSTRACT: Add the user to the current project
 # VERSION
 
-use App::Gitc::Util qw( git add_current_user );
+use App::Gitc::Util qw(
+    git
+    add_current_user
+    check_gitc_setup
+);
+
+check_gitc_setup();
 
 die "You need to configure a git username and email" unless git "config --get user.email";
 add_current_user();

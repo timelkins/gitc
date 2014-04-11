@@ -24,11 +24,14 @@ use warnings;
 
 use App::Gitc::Util qw(
     branch_point
+    check_gitc_setup
     full_changeset_name
     git
     is_auto_fetch
 );
 use Getopt::Long qw( :config pass_through );
+
+check_gitc_setup();
 
 my $onto;
 GetOptions( 'onto=s' => \$onto );

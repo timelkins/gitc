@@ -23,12 +23,15 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     current_branch
     current_branch_version
     is_valid_ref
     project_config
     version_tag_prefix
 );
+
+check_gitc_setup();
 
 die "Project doesn't support version tagging"
     unless project_config()->{use_version_tags};

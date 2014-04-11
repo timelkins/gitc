@@ -25,6 +25,7 @@ use warnings;
 use App::Gitc::Util qw(
     changeset_group
     changeset_merged_to
+    check_gitc_setup
     confirm
     current_branch
     full_changeset_name
@@ -46,6 +47,8 @@ use App::Gitc::Util qw(
 use App::Gitc::Reversible;
 use Getopt::Long;
 use List::MoreUtils qw( none );
+
+check_gitc_setup();
 
 my $onto;
 GetOptions( 'onto=s' => \$onto );

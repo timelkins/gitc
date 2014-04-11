@@ -23,7 +23,10 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     current_branch
 );
+
+check_gitc_setup();
 
 printf "%s\n",  current_branch();

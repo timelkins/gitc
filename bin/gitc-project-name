@@ -23,7 +23,10 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     project_name
 );
+
+check_gitc_setup();
 
 warn sprintf("Project is '%s'\n", project_name());

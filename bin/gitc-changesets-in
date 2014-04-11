@@ -23,8 +23,11 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     changesets_in
 );
+
+check_gitc_setup();
 
 my $target = shift
     or die "You must specify a Git commit\n";

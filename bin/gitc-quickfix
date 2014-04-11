@@ -22,7 +22,13 @@ use warnings;
 # ABSTRACT: Open a quickfix changeset
 # VERSION
 
-use App::Gitc::Util qw( highest_quickfix_number project_name );
+use App::Gitc::Util qw(
+    check_gitc_setup
+    highest_quickfix_number
+    project_name
+);
+
+check_gitc_setup();
 
 my $n = highest_quickfix_number( project_name() ) || 0;
 $n++;

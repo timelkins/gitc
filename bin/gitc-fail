@@ -23,6 +23,7 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     current_branch
     get_user_name
     get_user_email
@@ -40,12 +41,13 @@ use App::Gitc::Util qw(
 use App::Gitc::Reversible;
 use Getopt::Long;
 
+check_gitc_setup();
+
 my $with_changes = 0;
 my $skip_email   = 0;
 GetOptions(
     'with-changes' => \$with_changes,
     'skip_email'   => \$skip_email,
-    'skip-email'   => \$skip_email,
 );
 
 # verify the changeset

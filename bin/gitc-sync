@@ -24,9 +24,12 @@ use warnings;
 
 use App::Gitc::Util qw(
     git
+    check_gitc_setup
     confirm current_branch
     guarantee_a_clean_working_directory
 );
+
+check_gitc_setup();
 
 my $stash = guarantee_a_clean_working_directory();
 git "remote update -p origin";

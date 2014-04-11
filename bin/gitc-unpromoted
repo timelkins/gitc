@@ -23,6 +23,7 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     environment_preceding
     git
     is_auto_fetch
@@ -31,6 +32,8 @@ use App::Gitc::Util qw(
     unpromoted
 );
 use Getopt::Long;
+
+check_gitc_setup();
 
 our $format = '%n';
 our $verbose;

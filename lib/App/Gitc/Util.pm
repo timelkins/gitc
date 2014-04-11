@@ -22,6 +22,7 @@ use constant GITC_CONFIG => '/etc/gitc/gitc.config';
 
 BEGIN {
     our @EXPORT = qw(
+        check_gitc_setup
         current_branch
         eventum
         eventum_transition_status
@@ -91,6 +92,21 @@ BEGIN {
 }
 
 =head1 Exported Subroutines
+
+=head2 check_gitc_setup(...)
+
+Checks if .gitc has been set up correctly before attempting to run any
+gitc command.
+
+=cut
+
+sub check_gitc_setup {
+    my (@args) = @_;
+
+    my ($gitc) = git("show HEAD:.gitc");
+    die "No .gitc file found, this workspace has not been set up properly.\n"
+    . "See the HOWTO for more details.\n" unless $gitc;
+}
 
 =head2 confirm($message)
 

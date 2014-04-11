@@ -25,6 +25,7 @@ use warnings;
 use App::Gitc::Util qw(
     branch_basis
     branch_point
+    check_gitc_setup
     confirm
     current_branch
     fetch_tags
@@ -48,6 +49,8 @@ use App::Gitc::Util qw(
 use App::Gitc::Reversible;
 use Getopt::Long;
 use List::MoreUtils qw( any );
+
+check_gitc_setup();
 
 my $self_review = 0;
 my $keep = 0;

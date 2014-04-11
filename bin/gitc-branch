@@ -24,10 +24,16 @@ use strict;
 
 # Hide warnings from ITS/Jira
 
-use App::Gitc::Util qw( its_for_changeset );
+use App::Gitc::Util qw(
+    check_gitc_setup
+    its_for_changeset
+);
+
 BEGIN {
     $SIG{'__WARN__'} = sub { }
 }
+
+check_gitc_setup();
 
 my @branches = qx{ git branch --no-color };
 

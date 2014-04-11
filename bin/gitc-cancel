@@ -23,6 +23,7 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     changeset_merged_to
     confirm
     current_branch
@@ -33,6 +34,8 @@ use App::Gitc::Util qw(
 );
 use App::Gitc::Reversible;
 use Getopt::Long;
+
+check_gitc_setup();
 
 our $changeset = current_branch();
 die "You may not cancel your master branch" if $changeset eq 'master';

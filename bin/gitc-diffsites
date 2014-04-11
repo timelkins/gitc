@@ -22,7 +22,12 @@ use warnings;
 # ABSTRACT: Show a diff of a target environment
 # VERSION
 
-use App::Gitc::Util qw( environment_preceding );
+use App::Gitc::Util qw(
+    check_gitc_setup
+    environment_preceding
+);
+
+check_gitc_setup();
 
 my $target = shift or die "You must specify a target environment\n";
 my $source = environment_preceding($target)

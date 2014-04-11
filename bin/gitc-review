@@ -23,6 +23,7 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     get_user_name
     get_user_email
     git
@@ -36,6 +37,8 @@ use App::Gitc::Util qw(
     history_reviewer
 );
 use App::Gitc::Reversible;
+
+check_gitc_setup();
 
 # make sure we can really review this changeset
 our $changeset = shift or die "You must specify a changeset\n";

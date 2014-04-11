@@ -22,7 +22,10 @@ use warnings;
 # ABSTRACT: First time user setup for a gitc project
 # VERSION
 
-use App::Gitc::Util qw( git add_current_user );
+use App::Gitc::Util qw(
+    git
+    add_current_user
+);
 use App::Gitc::Config;
 
 my $project = shift;

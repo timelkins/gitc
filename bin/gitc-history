@@ -26,6 +26,7 @@ use App::Gitc::Util qw(
     branch_basis
     branch_point
     changeset_merged_to
+    check_gitc_setup
     current_branch
     full_changeset_name
     git
@@ -40,6 +41,8 @@ use App::Gitc::Util qw(
 );
 use Time::Local qw( timelocal );
 use Getopt::Long;
+
+check_gitc_setup();
 
 my $quiet = 0;
 GetOptions(

@@ -22,8 +22,14 @@ use warnings;
 # ABSTRACT: Get a list of active changesets
 # VERSION
 
-use App::Gitc::Util qw( project_name unmerged_changesets );
+use App::Gitc::Util qw(
+    check_gitc_setup
+    project_name
+    unmerged_changesets
+);
 use Getopt::Long;
+
+check_gitc_setup();
 
 my $format = 'basic';
 my $summary = 0;

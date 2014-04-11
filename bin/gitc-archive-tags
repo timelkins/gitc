@@ -23,6 +23,7 @@ use warnings;
 # VERSION
 
 use App::Gitc::Util qw(
+    check_gitc_setup
     git
     git_config
     git_dir
@@ -31,6 +32,8 @@ use App::Gitc::Util qw(
     project_root
 );
 use Getopt::Long;
+
+check_gitc_setup();
 
 my ($full, $preserve);
 GetOptions( 'full' => \$full, 'preserve' => \$preserve );
