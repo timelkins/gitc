@@ -103,9 +103,24 @@ gitc command.
 sub check_gitc_setup {
     my (@args) = @_;
 
+    my $not_setup = "This workspace has not been set up properly. See the "
+    . "gitc HOWTO for more\ndetails.\n";
+
     my ($gitc) = git("show HEAD:.gitc");
-    die "No .gitc file found, this workspace has not been set up properly.\n"
-    . "See the HOWTO for more details.\n" unless $gitc;
+    die "No .gitc file found.\n$not_setup" unless $gitc;
+
+    my @branches = grep { $_ ne 'master' } @{project_config()->{branches}};
+    die "No branches defined in config.\n" unless @branches;
+    my $local = join "\n", git("branch --list ".join(' ',@branches));
+    my @missing = grep { $local !~ /\b$_\b/ } @branches;
+    die "Missing these local branches: " . join(', ', @missing)
+        . "\n$not_setup" if @missing;
+
+    $_ = "origin/$_" for @branches;
+    my $remote = join "\n", git("ls-remote . ".join(' ', @branches));
+    @missing = grep { $remote !~ m{remotes/$_\b} } @branches;
+    die "Missing these remote branches: " . join(', ', @missing)
+        . "\n$not_setup" if @missing;
 }
 
 =head2 confirm($message)
