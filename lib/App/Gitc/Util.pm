@@ -452,6 +452,7 @@ sub add_current_user {
     # die if not configured
     die "You need to configure a git username and email." unless $user ne $email;
 
+    $user =~ s/ /_/g;
     my $user_info = {email => $email};
     my $blob = create_blob($user_info);
 
@@ -723,7 +724,7 @@ sub project_config {
         # specify itself This will allow that configuration file to be
         # formatted slightly differently but in a way which would make more
         # sense locally to that project
-        if ($file eq $project_file) {
+        if (defined($project_file) and $file eq $project_file) {
             if (!$data->{$project_name} and keys %{$data}) {
                 $data = {$project_name => $data};
             }

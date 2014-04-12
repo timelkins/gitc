@@ -25,12 +25,17 @@ use warnings;
 use App::Gitc::Util qw(
     git
     add_current_user
+    project_config
 );
-use App::Gitc::Config;
 
 my $project = shift;
 my $alias   = shift || '';
-git "clone $git_config->{repo_base}:$project $alias";
+my $project_config = project_config($project);
+my $repo_base = $project_config->{repo_base};
+die "No repo_base set in config. See HOWTO for more details.\n"
+    unless $repo_base;
+my $sep = $repo_base =~ /:/ ? '/' : ':';
+git "clone $repo_base$sep$project $alias";
 chdir( $alias || $project );
 
 add_current_user() if git 'config --get user.email';
